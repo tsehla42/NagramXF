@@ -2337,7 +2337,7 @@ public class ShareAlert extends BottomSheet implements NotificationCenter.Notifi
             boolean hasCaption = false;
             for (int i = 0; i < sendingMessageObjects.size(); i++) {
                 MessageObject forwarded = sendingMessageObjects.get(i);
-                if (forwarded != null && forwarded.messageOwner != null && forwarded.messageOwner.media != null && !TextUtils.isEmpty(forwarded.messageText)) {
+                if (forwarded != null && !TextUtils.isEmpty(forwarded.caption)) {
                     hasCaption = true;
                     break;
                 }

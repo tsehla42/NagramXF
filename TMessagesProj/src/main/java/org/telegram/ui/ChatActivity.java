@@ -12105,7 +12105,7 @@ public class ChatActivity extends BaseFragment implements
                             } else if (messageObject.isInvoice()) {
                                 hasInvoice = true;
                             }
-                            if (messageObject.messageOwner != null && messageObject.messageOwner.media != null && !TextUtils.isEmpty(messageObject.messageText)) {
+                            if (!TextUtils.isEmpty(messageObject.caption)) {
                                 hasCaption = true;
                             }
                             selectedMessagesIds[0].put(messageObject.getId(), messageObject);
@@ -13506,7 +13506,7 @@ public class ChatActivity extends BaseFragment implements
                 } else if (messageObject.isInvoice()) {
                     hasInvoice = true;
                 }
-                if (messageObject.messageOwner != null && messageObject.messageOwner.media != null && !TextUtils.isEmpty(messageObject.messageText)) {
+                if (!TextUtils.isEmpty(messageObject.caption)) {
                     selectedHasCaption = true;
                 }
             }
@@ -36003,7 +36003,7 @@ public class ChatActivity extends BaseFragment implements
                 args.putInt("dialogsType", DialogsActivity.DIALOGS_TYPE_FORWARD);
                 args.putInt("messagesCount", 1);
                 MessageObject captionSource = forwardingMessageGroup != null && forwardingMessageGroup.captionMessage != null ? forwardingMessageGroup.captionMessage : forwardingMessage;
-                args.putBoolean("hasCaption", captionSource != null && captionSource.messageOwner != null && captionSource.messageOwner.media != null && !TextUtils.isEmpty(captionSource.messageText));
+                args.putBoolean("hasCaption", captionSource != null && !TextUtils.isEmpty(captionSource.caption));
                 args.putInt("hasPoll", forwardingMessage.isTodo() ? 3 : forwardingMessage.isPoll() ? (forwardingMessage.isPublicPoll() ? 2 : 1) : 0);
                 if (ChatObject.isMonoForum(currentChat) && ChatObject.canManageMonoForum(currentAccount, currentChat) && currentChat.linked_monoforum_id != 0) {
                     args.putLong("forward_into_channel", -currentChat.linked_monoforum_id);
